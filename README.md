@@ -19,9 +19,8 @@ Vagrant makes it easy to reproducibly run the same build process to provision a 
 ### Required plugins for Vagrant
 
 First install the chef development kit (not client). You have to fill out a formular in order to start the download.
-```
-https://downloads.chef.io/tools/download/chefdk
-```
+
+[https://downloads.chef.io/tools/download/chefdk](https://downloads.chef.io/tools/download/chefdk)
 
 Afterwards install the vargrant-berkshelf plugin with
 ```
@@ -47,9 +46,7 @@ Place the private SSH access pem-file (in OpenSSH format) called `github_ssh_key
 
 otherwise follow the instructions of this page in order to configure a global github credentials file:
 
-```
-https://gist.github.com/jexchan/2351996
-```
+[https://gist.github.com/jexchan/2351996](https://gist.github.com/jexchan/2351996)
 
 
 
