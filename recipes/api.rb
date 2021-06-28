@@ -216,7 +216,7 @@ directory "/var/www/imvlandau-api" do
 end
 
 git "imvlandau-api" do
-  repository "git@github.com:sufius/imvlandau-api.git"
+  repository "git@github.com:imvlandau/imvlandau-api.git"
   revision "master"
   destination "/var/www/imvlandau-api"
   ssh_wrapper "/usr/local/bin/git_wrapper.sh"

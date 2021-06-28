@@ -47,7 +47,7 @@ end
 
 aws_s3_file "#{home}/.ssh/id_rsa" do
   bucket "imvlandau"
-  remote_path "github_ssh_key"
+  remote_path "github_ssh_key_imvlandau.pem"
   aws_access_key aws_access_key_id
   aws_secret_access_key aws_secret_access_key
   region "us-east-2"

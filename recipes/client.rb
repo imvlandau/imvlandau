@@ -86,7 +86,7 @@ directory "/var/www/imvlandau-client" do
 end
 
 git "imvlandau-client" do
-  repository "git@github.com:sufius/imvlandau-client.git"
+  repository "git@github.com:imvlandau/imvlandau-client.git"
   revision "master"
   destination "/var/www/imvlandau-client"
   ssh_wrapper "/usr/local/bin/git_wrapper.sh"
