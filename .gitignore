@@ -1,0 +1,21 @@
+.vagrant
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
+
+vagrant*.log
+/nodes/*
+.remote-sync.json
+/data_bags/secrets/S3.json
+config.json

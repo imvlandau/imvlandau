@@ -1,0 +1,39 @@
+{
+  "imv": {
+    "aws_access_key_id": "myawsaccesskeyid",
+    "aws_secret_access_key": "mysecretawsaccesskey",
+    "client": {
+      "react_app_auth0_domain": "myauth0accountname.countrycode.auth0.com",
+      "react_app_auth0_client_id": "myauth0clientid",
+      "ip": "10.0.0.10",
+      "system": {
+        "timezone": "Europe/Berlin",
+        "short_hostname": "imvlandau-client",
+        "static_hosts": {
+          "10.0.0.11": "imvlandau-api"
+        }
+      }
+    },
+    "api": {
+      "ip": "10.0.0.11",
+      "system": {
+        "timezone": "Europe/Berlin",
+        "short_hostname": "imvlandau-api",
+        "static_hosts": {
+          "10.0.0.10": "imvlandau-client",
+          "10.0.0.12": "imvlandau-database"
+        }
+      }
+    },
+    "database": {
+      "ip": "10.0.0.12",
+      "system": {
+        "timezone": "Europe/Berlin",
+        "short_hostname": "imvlandau-database",
+        "static_hosts": {
+          "10.0.0.11": "imvlandau-api"
+        }
+      }
+    }
+  }
+}

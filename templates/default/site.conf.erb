@@ -1,0 +1,17 @@
+<VirtualHost *:<%= @SERVER_PORT %>>
+    ServerAdmin <%= @SERVER_ADMIN %>
+    ServerName <%= @SERVER_NAME %>
+    <%= "ServerAlias #{@SERVER_ALIAS}" if @SERVER_ALIAS && !@SERVER_ALIAS.empty? %>
+
+    DocumentRoot <%= @DOCUMENT_ROOT %>
+    <Directory <%= @DOCUMENT_ROOT %>>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    SetEnv HOME <%= @HOME %>
+
+    # LogLevel warn
+    ErrorLog <%= @PATH_ERROR_LOG %>
+    CustomLog <%= @PATH_ACCESS_LOG %> combined
+</VirtualHost>
