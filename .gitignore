@@ -19,3 +19,5 @@ vagrant*.log
 .remote-sync.json
 /data_bags/secrets/S3.json
 config.json
+github_ssh_key_imvlandau.pem
+id_rsa*

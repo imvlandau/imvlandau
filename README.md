@@ -39,6 +39,20 @@ Run within the terminal (f. e. git bash with mingw/cygwin installed, and binary-
 
 `vagrant up`
 
+### Add the private SSH access key for this repository into the root folder of this project
+
+Place the private SSH access pem-file (in OpenSSH format) called `github_ssh_key_imvlandau.pem` into the root directory. Open a terminal, navigate to the root of your local repository and execute following command:
+
+`git config core.sshCommand "ssh -i github_ssh_key_imvlandau.pem"`
+
+otherwise follow the instructions of this page in order to configure a global github credentials file:
+
+```
+https://gist.github.com/jexchan/2351996
+```
+
+
+
 ## Development
 
 Use following command for debugging
