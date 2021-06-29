@@ -2,10 +2,10 @@ DEPENDENCIES
   acme (~> 4.1.1)
   apache2 (~> 7.1.1)
   aws (~> 8.0.4)
-  line (~> 2.4.1)
   imvlandau
     path: .
     metadata: true
+  line (~> 2.4.1)
   postgresql (~> 7.1.4)
   system (~> 0.11.3)
 
@@ -16,7 +16,6 @@ GRAPH
   aws (8.0.4)
   cron (1.7.6)
   hostsfile (3.0.1)
-  line (2.4.1)
   imvlandau (0.1.0)
     acme (>= 0.0.0)
     apache2 (>= 0.0.0)
@@ -24,6 +23,7 @@ GRAPH
     line (>= 0.0.0)
     postgresql (>= 0.0.0)
     system (>= 0.0.0)
+  line (2.4.1)
   postgresql (7.1.5)
   system (0.11.3)
     apt (>= 0.0.0)
