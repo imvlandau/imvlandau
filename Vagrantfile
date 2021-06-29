@@ -194,7 +194,6 @@ Vagrant.configure("2") do |config|
     client.vm.box = "generic/ubuntu1804"
     client.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1"
     client.vm.network "forwarded_port", guest: 8443, host: 8443, host_ip: "127.0.0.1"
-    client.vm.network "forwarded_port", guest: 4444, host: 4444, host_ip: "127.0.0.1"
     client.vm.network "forwarded_port", guest: 22,   host: 2222, host_ip: "127.0.0.1", id: "ssh", auto_correct: true
     client.vm.network "private_network", ip: configuration["imv"]["client"]["ip"]
     client.vm.provider "virtualbox" do |v|
