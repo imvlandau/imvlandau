@@ -14,10 +14,6 @@ port                    = node["imv"]["client"]["port"]
 port_ssl                = node["imv"]["client"]["port_ssl"]
 api_target              = node["imv"]["client"]["api_target"]
 api_target_ssl          = node["imv"]["client"]["api_target_ssl"]
-synchronizer_port       = node["imv"]["client"]["synchronizer_port"]
-synchronizer_port_ssl   = node["imv"]["client"]["synchronizer_port_ssl"]
-synchronizer_target     = node["imv"]["client"]["synchronizer_target"]
-synchronizer_target_ssl = node["imv"]["client"]["synchronizer_target_ssl"]
 https                   = node["imv"]["client"]["https"]
 react_app_auth0_domain  = node["imv"]["client"]["react_app_auth0_domain"]
 react_app_auth0_client_id = node["imv"]["client"]["react_app_auth0_client_id"]
@@ -69,7 +65,6 @@ end
 #####################
 
 include_recipe "imvlandau::bashrc"
-
 include_recipe "imvlandau::ssl"
 
 #####################
@@ -102,10 +97,6 @@ template "/var/www/imvlandau-client/.env.local" do
     "PORT_SSL" => port_ssl,
     "API_TARGET" => api_target,
     "API_TARGET_SSL" => api_target_ssl,
-    "SYNCHRONIZER_PORT" => synchronizer_port,
-    "SYNCHRONIZER_PORT_SSL" => synchronizer_port_ssl,
-    "SYNCHRONIZER_TARGET" => synchronizer_target,
-    "SYNCHRONIZER_TARGET_SSL" => synchronizer_target_ssl,
     "REACT_APP_AUTH0_DOMAIN" => react_app_auth0_domain,
     "REACT_APP_AUTH0_CLIENT_ID" => react_app_auth0_client_id,
     "HTTPS" => https,

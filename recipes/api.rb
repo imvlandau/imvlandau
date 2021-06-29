@@ -31,16 +31,10 @@ owner             = node["imv"]["owner"]
 group             = node["imv"]["group"]
 ssl_cert_file     = node["imv"]["ssl_cert_file"]
 ssl_cert_key_file = node["imv"]["ssl_cert_key_file"]
-aws_access_key_id = node["imv"]["aws_access_key_id"]
-aws_secret_access_key = node["imv"]["aws_secret_access_key"]
-aws_price_list_service_enpoint = node["imv"]["aws_price_list_service_enpoint"]
-aws_ec2_service_enpoint        = node["imv"]["aws_ec2_service_enpoint"]
+
 
 
 fail "Database hostname is undefined" unless database_hostname && !database_hostname.empty?
-fail "AWS_ACCESS_KEY_ID is undefined" unless aws_access_key_id && !aws_access_key_id.empty?
-fail "AWS_SECRET_ACCESS_KEY is undefined" unless aws_secret_access_key && !aws_secret_access_key.empty?
-
 database_url="pgsql://#{database_user}:#{database_password}@#{database_hostname}:#{database_port}/#{database_name}"
 
 
@@ -60,49 +54,6 @@ bash "install composer" do
   action :run
 end
 
-# install ansible
-apt_package [
-  "software-properties-common",
-  "python-pip"
-  ] do
-    action :install
-end
-
-apt_repository "ansible" do
-    uri "ppa:ansible/ansible"
-    components ["main"]
-    distribution "bionic"
-    action :add
-end
-
-apt_package "ansible" do
-    action :install
-end
-
-execute "install passlib and boto with pip" do
-  user "root"
-  group "root"
-  command "pip install passlib boto"
-  action :run
-end
-
-# install supervisord for rabbitmq
-apt_package [
-  "supervisor",
-  "librabbitmq-dev"
-  ] do
-    action :install
-end
-
-bash "install librabbitmq php extension" do
-  code <<-EOH
-    pecl channel-update pecl.php.net
-    printf "\n" | pecl install amqp
-  EOH
-  user "root"
-  group "root"
-  action :run
-end
 
 #####################
 # setup process
@@ -193,14 +144,6 @@ execute "enable imvlandau.ini" do
   action :run
 end
 
-cookbook_file "/etc/supervisor/conf.d/imv-messenger-worker.conf" do
-  source "imv-messenger-worker.conf"
-  owner "root"
-  group "root"
-  mode "600"
-  action :create
-end
-
 
 #####################
 # deployment process
@@ -233,53 +176,9 @@ execute "run composer install" do
   action :run
 end
 
-# create AWS credentials folder for credentials shared between SDKs
-directory "#{home}/.aws" do
-  owner owner
-  group group
-  mode "700"
-  action :create
-end
-
-# create AWS credentials file for credentials shared between SDKs
-template "#{home}/.aws/credentials" do
-  source "credentials.erb"
-  variables(
-    :AWS_ACCESS_KEY_ID => aws_access_key_id,
-    :AWS_SECRET_ACCESS_KEY => aws_secret_access_key
-  )
-  owner owner
-  group group
-  action :create
-end
-
 append_if_no_line "add database_url environment variable" do
   path "/var/www/imvlandau-api/.env.local"
   line "DATABASE_URL=#{database_url}"
-  action :edit
-end
-
-append_if_no_line "add AWS price list service endpoint environment variable" do
-  path "/var/www/imvlandau-api/.env.local"
-  line "AWS_PRICE_LIST_SERVICE_ENDPOINT=#{aws_price_list_service_enpoint}"
-  action :edit
-end
-
-append_if_no_line "add AWS EC2 service endpoint environment variable" do
-  path "/var/www/imvlandau-api/.env.local"
-  line "AWS_EC2_SERVICE_ENDPOINT=#{aws_ec2_service_enpoint}"
-  action :edit
-end
-
-append_if_no_line "add AWS access key id to .env.local" do
-  path "/var/www/imvlandau-api/.env.local"
-  line "AWS_KEY=#{aws_access_key_id}"
-  action :edit
-end
-
-append_if_no_line "add AWS secret access key to .env.local" do
-  path "/var/www/imvlandau-api/.env.local"
-  line "AWS_SECRET=#{aws_secret_access_key}"
   action :edit
 end
 
@@ -289,36 +188,11 @@ execute "change owner of .env.local" do
   not_if "stat -c %U /var/www/imvlandau-api/.env.local | grep -q #{owner}"
 end
 
-aws_s3_file "#{home}/.ssh/imv-predefined-ec2-instance.pem" do
-  bucket "imvlandau"
-  remote_path "imv-predefined-ec2-instance.pem"
-  aws_access_key aws_access_key_id
-  aws_secret_access_key aws_secret_access_key
-  region "us-east-2"
-  owner owner
-  group group
-  mode "600"
-  action :create
-end
-
 directory "/var/www/imvlandau-api/var/userData" do
   owner user
   group group
   mode "755"
   action :create
-end
-
-execute "run create-react-app" do
-  cwd "/var/www/imvlandau-api/var/userData"
-  user user
-  group group
-  environment ({
-    "HOME" => home,
-    "USER" => user
-  })
-  command "npx create-react-app create-react-app"
-  not_if { ::Dir.exists?("/var/www/imvlandau-api/var/userData/create-react-app")}
-  action :run
 end
 
 execute "add phpinfo file" do
@@ -335,16 +209,6 @@ file "remove phpinfo file" do
   action :delete
 end
 
-bash "initialize and start supervisor" do
-  code <<-EOH
-    sudo supervisorctl reread
-    sudo supervisorctl update
-    sudo supervisorctl start imv-messenger-consume:*
-  EOH
-  user "root"
-  group "root"
-  action :run
-end
 
 #####################
 # execution process
