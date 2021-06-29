@@ -42,27 +42,32 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 197 (class 1259 OID 16388)
--- Name: qrcode; Type: TABLE; Schema: public; Owner: imvadmin
+-- Name: attendees; Type: TABLE; Schema: public; Owner: imvadmin
 --
 
-CREATE TABLE public.qrcode (
+CREATE TABLE public.attendees (
     id integer NOT NULL,
-    shortid character varying(32) NOT NULL,
-    title character varying(255) NOT NULL,
-    version integer DEFAULT 0,
+    name character varying(50) NOT NULL,
+    email character varying(50) NOT NULL,
+    mobile character varying(50) NOT NULL,
+    amountCompanions integer DEFAULT 0,
+    companion_1 character varying(50) NULL,
+    companion_2 character varying(50) NULL,
+    companion_3 character varying(50) NULL,
+    companion_4 character varying(50) NULL,
     created_at timestamp(0) without time zone NOT NULL,
     updated_at timestamp(0) without time zone NOT NULL
 );
 
 
-ALTER TABLE public.qrcode OWNER TO imvadmin;
+ALTER TABLE public.attendees OWNER TO imvadmin;
 
 --
 -- TOC entry 196 (class 1259 OID 16386)
--- Name: qrcode_id_seq; Type: SEQUENCE; Schema: public; Owner: imvadmin
+-- Name: attendees_id_seq; Type: SEQUENCE; Schema: public; Owner: imvadmin
 --
 
-CREATE SEQUENCE public.qrcode_id_seq
+CREATE SEQUENCE public.attendees_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -70,33 +75,33 @@ CREATE SEQUENCE public.qrcode_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.qrcode_id_seq OWNER TO imvadmin;
+ALTER TABLE public.attendees_id_seq OWNER TO imvadmin;
 
 --
 -- TOC entry 2924 (class 0 OID 16388)
 -- Dependencies: 197
--- Data for Name: qrcode; Type: TABLE DATA; Schema: public; Owner: imvadmin
+-- Data for Name: attendees; Type: TABLE DATA; Schema: public; Owner: imvadmin
 --
 
-INSERT INTO public.qrcode VALUES (1, 'create-react-qrcode', 'create-react-qrcode', 0, '2019-11-01 15:00:29', '2019-11-01 15:00:18');
+INSERT INTO public.attendees VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '017645866729', 4, 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
 
 
 --
 -- TOC entry 2931 (class 0 OID 0)
 -- Dependencies: 196
--- Name: qrcode_id_seq; Type: SEQUENCE SET; Schema: public; Owner: imvadmin
+-- Name: attendees_id_seq; Type: SEQUENCE SET; Schema: public; Owner: imvadmin
 --
 
-SELECT pg_catalog.setval('public.qrcode_id_seq', 1, false);
+SELECT pg_catalog.setval('public.attendees_id_seq', 1, false);
 
 
 --
 -- TOC entry 2801 (class 2606 OID 16393)
--- Name: qrcode qrcode_pkey; Type: CONSTRAINT; Schema: public; Owner: imvadmin
+-- Name: attendees attendees_pkey; Type: CONSTRAINT; Schema: public; Owner: imvadmin
 --
 
-ALTER TABLE ONLY public.qrcode
-    ADD CONSTRAINT qrcode_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.attendees
+    ADD CONSTRAINT attendees_pkey PRIMARY KEY (id);
 
 
 -- Completed on 2019-11-20 18:21:45
