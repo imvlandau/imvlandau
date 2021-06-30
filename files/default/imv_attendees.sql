@@ -50,7 +50,6 @@ CREATE TABLE public.attendees (
     name character varying(50) NOT NULL,
     email character varying(50) NOT NULL,
     mobile character varying(50) NOT NULL,
-    amountCompanions integer DEFAULT 0,
     companion_1 character varying(50) NULL,
     companion_2 character varying(50) NULL,
     companion_3 character varying(50) NULL,
@@ -83,7 +82,7 @@ ALTER TABLE public.attendees_id_seq OWNER TO imvadmin;
 -- Data for Name: attendees; Type: TABLE DATA; Schema: public; Owner: imvadmin
 --
 
-INSERT INTO public.attendees VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '017645866729', 4, 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
+INSERT INTO public.attendees VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '017645866729', 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
 
 
 --
