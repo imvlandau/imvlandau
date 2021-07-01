@@ -48,7 +48,8 @@ SET default_with_oids = false;
 CREATE TABLE public.attendees (
     id integer NOT NULL,
     name character varying(50) NOT NULL,
-    email character varying(50) NOT NULL,
+    email character varying(50) UNIQUE NOT NULL,
+    token integer UNIQUE NOT NULL,
     mobile character varying(50) NOT NULL,
     companion_1 character varying(50) NULL,
     companion_2 character varying(50) NULL,
@@ -82,7 +83,7 @@ ALTER TABLE public.attendees_id_seq OWNER TO imvadmin;
 -- Data for Name: attendees; Type: TABLE DATA; Schema: public; Owner: imvadmin
 --
 
-INSERT INTO public.attendees VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '017645866729', 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
+INSERT INTO public.attendees VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '12345', '017645866729', 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
 
 
 --
