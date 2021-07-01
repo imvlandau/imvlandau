@@ -35,25 +35,25 @@ apt_repository "php7" do
 end
 
 apt_package [
-      "libapache2-mod-php7.2",
+      "libapache2-mod-php7.4",
       "libqdbm14",
       "libssl1.1",
-      "php7.2",
-      "php7.2-cli",
-      "php7.2-common",
-      "php7.2-curl",
-      "php7.2-gd",
-      "php7.2-json",
-      "php7.2-mbstring",
-      "php7.2-opcache",
-      "php7.2-readline",
-      "php7.2-xml",
-      "php7.2-cgi",
-      "php7.2-fpm",
-      "php7.2-sqlite3",
-      "php7.2-pgsql",
-      "php7.2-intl",
-      "php7.2-dev",
+      "php7.4",
+      "php7.4-cli",
+      "php7.4-common",
+      "php7.4-curl",
+      "php7.4-gd",
+      "php7.4-json",
+      "php7.4-mbstring",
+      "php7.4-opcache",
+      "php7.4-readline",
+      "php7.4-xml",
+      "php7.4-cgi",
+      "php7.4-fpm",
+      "php7.4-sqlite3",
+      "php7.4-pgsql",
+      "php7.4-intl",
+      "php7.4-dev",
       "php-pear",
       "file",
       "git",
@@ -74,9 +74,9 @@ apache2_module "deflate"
 apache2_module "headers"
 apache2_module "rewrite"
 apache2_module "ssl"
-apache2_module "php7.2" do
+apache2_module "php7.4" do
   identifier "php7_module"
-  mod_name "libphp7.2.so"
+  mod_name "libphp7.4.so"
 end
 
 # just adopted this from the example at
