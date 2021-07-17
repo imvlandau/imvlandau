@@ -109,7 +109,7 @@ template "/etc/apache2/sites-available/#{site_conf_ssl}.conf" do
   action :create
 end
 
-cookbook_file "/etc/php/7.2/mods-available/opcache.ini" do
+cookbook_file "/etc/php/7.4/mods-available/opcache.ini" do
   source "opcache#{node.chef_environment == "development" ? "_dev" : ""}.ini"
   owner "root"
   group "root"
@@ -125,7 +125,7 @@ execute "enable opcache" do
   action :run
 end
 
-template "/etc/php/7.2/mods-available/imvlandau.ini" do
+template "/etc/php/7.4/mods-available/imvlandau.ini" do
   source "imvlandau.ini.erb"
   variables(
     :TIMEZONE => timezone
