@@ -46,18 +46,23 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE public.attendees (
-    id integer NOT NULL,
-    name character varying(50) NOT NULL,
-    email character varying(50) UNIQUE NOT NULL,
-    token integer UNIQUE NOT NULL,
-    mobile character varying(50) NOT NULL,
-    companion_1 character varying(50) NULL,
-    companion_2 character varying(50) NULL,
-    companion_3 character varying(50) NULL,
-    companion_4 character varying(50) NULL,
-    created_at timestamp(0) without time zone NOT NULL,
-    updated_at timestamp(0) without time zone NOT NULL
+	id int4 NOT NULL,
+	"name" varchar(50) NOT NULL,
+	email varchar(50) NOT NULL,
+	mobile varchar(50) NOT NULL,
+	companion_1 varchar(50) NULL,
+	companion_2 varchar(50) NULL,
+	companion_3 varchar(50) NULL,
+	companion_4 varchar(50) NULL,
+	created_at timestamp NOT NULL,
+	updated_at timestamp NOT NULL,
+	"token" int4 NOT NULL,
+	has_been_scanned bool NOT NULL DEFAULT false,
+	has_been_scanned_amount int4 NOT NULL DEFAULT 0,
+	CONSTRAINT attendees_pkey PRIMARY KEY (id)
 );
+CREATE UNIQUE INDEX uniq_c8c96b255f37a13b ON public.attendees USING btree (token);
+CREATE UNIQUE INDEX uniq_c8c96b25e7927c74 ON public.attendees USING btree (email);
 
 
 ALTER TABLE public.attendees OWNER TO imvadmin;
