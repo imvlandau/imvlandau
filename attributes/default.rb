@@ -32,7 +32,7 @@ default["imv"]["database"]["version"]                  = "11"
 default["imv"]["database"]["config"]                   = { "listen_addresses": "*" }
 default["imv"]["database"]["config_name"]              = "imvlandau-postgresql"
 default["imv"]["database"]["locale"]                   = "en_US.UTF-8"
-default["imv"]["database"]["dump"]                     = "imv_attendees.sql"
+default["imv"]["database"]["dump"]                     = "imv_participant.sql"
 
 default["imv"]["git"]["name"]                          = "imvadmin"
 default["imv"]["git"]["email"]                         = "imvadmin@imv-landau.de"

@@ -42,10 +42,10 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 197 (class 1259 OID 16388)
--- Name: attendees; Type: TABLE; Schema: public; Owner: imvadmin
+-- Name: participant; Type: TABLE; Schema: public; Owner: imvadmin
 --
 
-CREATE TABLE public.attendees (
+CREATE TABLE public.participant (
 	id int4 NOT NULL,
 	"name" varchar(50) NOT NULL,
 	email varchar(50) NOT NULL,
@@ -59,20 +59,20 @@ CREATE TABLE public.attendees (
 	"token" int4 NOT NULL,
 	has_been_scanned bool NOT NULL DEFAULT false,
 	has_been_scanned_amount int4 NOT NULL DEFAULT 0,
-	CONSTRAINT attendees_pkey PRIMARY KEY (id)
+	CONSTRAINT participant_pkey PRIMARY KEY (id)
 );
-CREATE UNIQUE INDEX uniq_c8c96b255f37a13b ON public.attendees USING btree (token);
-CREATE UNIQUE INDEX uniq_c8c96b25e7927c74 ON public.attendees USING btree (email);
+CREATE UNIQUE INDEX uniq_c8c96b255f37a13b ON public.participant USING btree (token);
+CREATE UNIQUE INDEX uniq_c8c96b25e7927c74 ON public.participant USING btree (email);
 
 
-ALTER TABLE public.attendees OWNER TO imvadmin;
+ALTER TABLE public.participant OWNER TO imvadmin;
 
 --
 -- TOC entry 196 (class 1259 OID 16386)
--- Name: attendees_id_seq; Type: SEQUENCE; Schema: public; Owner: imvadmin
+-- Name: participant_id_seq; Type: SEQUENCE; Schema: public; Owner: imvadmin
 --
 
-CREATE SEQUENCE public.attendees_id_seq
+CREATE SEQUENCE public.participant_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -80,33 +80,33 @@ CREATE SEQUENCE public.attendees_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.attendees_id_seq OWNER TO imvadmin;
+ALTER TABLE public.participant_id_seq OWNER TO imvadmin;
 
 --
 -- TOC entry 2924 (class 0 OID 16388)
 -- Dependencies: 197
--- Data for Name: attendees; Type: TABLE DATA; Schema: public; Owner: imvadmin
+-- Data for Name: participant; Type: TABLE DATA; Schema: public; Owner: imvadmin
 --
 
-INSERT INTO public.attendees VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '12345', '017645866729', 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
+INSERT INTO public.participant VALUES (1, 'Sufian Abu-Rab', 's.aburab@gmail.com', '12345', '017645866729', 'Achmed Abu-Rab', 'Mohammed Abu-Rab', 'Amir Abu-Rab', 'Karim Abu-Rab', '2021-06-01 15:00:29', '2021-06-01 15:00:29');
 
 
 --
 -- TOC entry 2931 (class 0 OID 0)
 -- Dependencies: 196
--- Name: attendees_id_seq; Type: SEQUENCE SET; Schema: public; Owner: imvadmin
+-- Name: participant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: imvadmin
 --
 
-SELECT pg_catalog.setval('public.attendees_id_seq', 1, false);
+SELECT pg_catalog.setval('public.participant_id_seq', 1, false);
 
 
 --
 -- TOC entry 2801 (class 2606 OID 16393)
--- Name: attendees attendees_pkey; Type: CONSTRAINT; Schema: public; Owner: imvadmin
+-- Name: participant participant_pkey; Type: CONSTRAINT; Schema: public; Owner: imvadmin
 --
 
-ALTER TABLE ONLY public.attendees
-    ADD CONSTRAINT attendees_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.participant
+    ADD CONSTRAINT participant_pkey PRIMARY KEY (id);
 
 
 -- Completed on 2019-11-20 18:21:45
