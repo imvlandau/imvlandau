@@ -17,6 +17,7 @@ api_target_ssl          = node["imv"]["client"]["api_target_ssl"]
 https                   = node["imv"]["client"]["https"]
 react_app_auth0_domain  = node["imv"]["client"]["react_app_auth0_domain"]
 react_app_auth0_client_id = node["imv"]["client"]["react_app_auth0_client_id"]
+react_app_base_url      = node["imv"]["client"]["react_app_base_url"]
 ssl_ca_file             = node["imv"]["ssl_ca_file"]
 ssl_crt_file            = node["imv"]["ssl_crt_file"]
 ssl_key_file            = node["imv"]["ssl_key_file"]
@@ -29,6 +30,7 @@ group                   = node["imv"]["group"]
 
 fail "Auth0 domain is undefined" unless react_app_auth0_domain && !react_app_auth0_domain.empty?
 fail "Auth0 client_id is undefined" unless react_app_auth0_client_id && !react_app_auth0_client_id.empty?
+fail "Base URL is undefined" unless react_app_base_url && !react_app_base_url.empty?
 
 #####################
 # installation process
@@ -99,6 +101,7 @@ template "/var/www/imvlandau-client/.env.local" do
     "API_TARGET_SSL" => api_target_ssl,
     "REACT_APP_AUTH0_DOMAIN" => react_app_auth0_domain,
     "REACT_APP_AUTH0_CLIENT_ID" => react_app_auth0_client_id,
+    "REACT_APP_BASE_URL" => react_app_base_url,
     "HTTPS" => https,
     "SSL_CA_FILE" => ssl_ca_file,
     "SSL_CRT_FILE" => ssl_crt_file,

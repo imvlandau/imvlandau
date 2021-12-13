@@ -7,6 +7,7 @@ default["imv"]["client"]["api_target"]                 = "http://imvlandau-api:8
 default["imv"]["client"]["api_target_ssl"]             = "https://imvlandau-api:443/"
 default["imv"]["client"]["react_app_auth0_domain"]     = ""
 default["imv"]["client"]["react_app_auth0_client_id"]  = ""
+default["imv"]["client"]["react_app_base_url"]         = "/api"
 
 default["imv"]["api"]["system"]["short_hostname"]      = "imvlandau-api"
 default["imv"]["api"]["port"]                          = "80"
