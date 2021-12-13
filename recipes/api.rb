@@ -29,8 +29,8 @@ home              = node["imv"]["home"]
 user              = node["imv"]["user"]
 owner             = node["imv"]["owner"]
 group             = node["imv"]["group"]
-ssl_cert_file     = node["imv"]["ssl_cert_file"]
-ssl_cert_key_file = node["imv"]["ssl_cert_key_file"]
+ssl_crt_file      = node["imv"]["ssl_crt_file"]
+ssl_key_file      = node["imv"]["ssl_key_file"]
 
 
 
@@ -100,8 +100,8 @@ template "/etc/apache2/sites-available/#{site_conf_ssl}.conf" do
     :HOME => home,
     :PATH_ERROR_LOG => path_error_log,
     :PATH_ACCESS_LOG => path_access_log,
-    :SSL_CERT_FILE => ssl_cert_file,
-    :SSL_CERT_KEY_FILE => ssl_cert_key_file
+    :SSL_CRT_FILE => ssl_crt_file,
+    :SSL_KEY_FILE => ssl_key_file
   )
   owner owner
   group group

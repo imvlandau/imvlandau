@@ -18,8 +18,8 @@ https                   = node["imv"]["client"]["https"]
 react_app_auth0_domain  = node["imv"]["client"]["react_app_auth0_domain"]
 react_app_auth0_client_id = node["imv"]["client"]["react_app_auth0_client_id"]
 ssl_ca_file             = node["imv"]["ssl_ca_file"]
-ssl_cert_file           = node["imv"]["ssl_cert_file"]
-ssl_cert_key_file       = node["imv"]["ssl_cert_key_file"]
+ssl_crt_file            = node["imv"]["ssl_crt_file"]
+ssl_key_file            = node["imv"]["ssl_key_file"]
 home                    = node["imv"]["home"]
 user                    = node["imv"]["user"]
 owner                   = node["imv"]["owner"]
@@ -101,8 +101,8 @@ template "/var/www/imvlandau-client/.env.local" do
     "REACT_APP_AUTH0_CLIENT_ID" => react_app_auth0_client_id,
     "HTTPS" => https,
     "SSL_CA_FILE" => ssl_ca_file,
-    "SSL_CERT_FILE" => ssl_cert_file,
-    "SSL_CERT_KEY_FILE" => ssl_cert_key_file
+    "SSL_CRT_FILE" => ssl_crt_file,
+    "SSL_KEY_FILE" => ssl_key_file
   })
   owner owner
   group group

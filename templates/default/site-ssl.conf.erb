@@ -11,8 +11,8 @@
 
     <IfModule mod_ssl.c>
       SSLEngine on
-      SSLCertificateFile <%= @SSL_CERT_FILE %>
-      SSLCertificateKeyFile <%= @SSL_CERT_KEY_FILE %>
+      SSLCertificateFile <%= @SSL_CRT_FILE %>
+      SSLCertificateKeyFile <%= @SSL_KEY_FILE %>
     </IfModule>
 
     SetEnv HOME <%= @HOME %>
