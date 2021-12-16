@@ -106,7 +106,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "database" do |database|
     VAGRANT_DISABLE_RESOLV_REPLACE=1
-    database.vm.box = "generic/ubuntu1804"
+    database.vm.box = "generic/ubuntu2010"
     database.vm.network "forwarded_port", guest: 5432, host: 5432, host_ip: "127.0.0.1"
     database.vm.network "forwarded_port", guest: 22,   host: 2121, host_ip: "127.0.0.1", id: "ssh", auto_correct: true
     database.vm.network "private_network", ip: configuration["imv"]["database"]["ip"]

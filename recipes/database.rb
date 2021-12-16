@@ -42,13 +42,27 @@ database_dump          = node["imv"]["database"]["dump"]
 # installation process
 #####################
 
-apt_repository "postgresql" do
-    uri "http://apt.postgresql.org/pub/repos/apt"
-    components ["main", database_version]
-    distribution "bionic-pgdg"
-    key "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
-    action :add
+bash "install postgresql" do
+  cwd "/tmp"
+  code <<-EOH
+    sudo apt install curl ca-certificates gnupg
+    curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+  EOH
+  user "root"
+  group "root"
+  action :run
+#  not_if { ::File.exists?('/opt/chef/embedded/ssl/certs/gitlab.pem') }
 end
+
+apt_update
+
+apt_package [
+      "postgresql"
+    ] do
+    action :install
+end
+
 
 postgresql_server_install "Setup my PostgreSQL #{database_version} server" do
   setup_repo false

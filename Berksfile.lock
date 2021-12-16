@@ -6,7 +6,7 @@ DEPENDENCIES
     path: .
     metadata: true
   line (~> 2.4.1)
-  postgresql (~> 7.1.4)
+  postgresql (~> 8.3.0)
   system (~> 0.11.3)
 
 GRAPH
@@ -23,9 +23,13 @@ GRAPH
     line (>= 0.0.0)
     postgresql (>= 0.0.0)
     system (>= 0.0.0)
+    yum-epel (>= 0.0.0)
   line (2.4.1)
-  postgresql (7.1.5)
+  postgresql (8.3.0)
+    apt (>= 0.0.0)
+    yum-epel (>= 0.0.0)
   system (0.11.3)
     apt (>= 0.0.0)
     cron (~> 1.7)
     hostsfile (>= 0.0.0)
+  yum-epel (4.2.3)
