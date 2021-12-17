@@ -52,7 +52,7 @@ bash "install postgresql" do
   user "root"
   group "root"
   action :run
-#  not_if { ::File.exists?('/opt/chef/embedded/ssl/certs/gitlab.pem') }
+  not_if { ::File.exists?('/usr/bin/psql') }
 end
 
 apt_update
@@ -61,6 +61,7 @@ apt_package [
       "postgresql"
     ] do
     action :install
+    not_if { ::File.exists?('/usr/bin/psql') }
 end
 
 
