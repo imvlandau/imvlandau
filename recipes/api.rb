@@ -31,10 +31,16 @@ owner             = node["imv"]["owner"]
 group             = node["imv"]["group"]
 ssl_crt_file      = node["imv"]["ssl_crt_file"]
 ssl_key_file      = node["imv"]["ssl_key_file"]
-
+react_app_auth0_domain    = node["imv"]["client"]["react_app_auth0_domain"]
+react_app_auth0_client_id = node["imv"]["client"]["react_app_auth0_client_id"]
+react_app_auth0_audience  = node["imv"]["client"]["react_app_auth0_audience"]
 
 
 fail "Database hostname is undefined" unless database_hostname && !database_hostname.empty?
+fail "Auth0 domain is undefined" unless react_app_auth0_domain && !react_app_auth0_domain.empty?
+fail "Auth0 client_id is undefined" unless react_app_auth0_client_id && !react_app_auth0_client_id.empty?
+fail "Auth0 audience is undefined" unless react_app_auth0_audience && !react_app_auth0_audience.empty?
+
 database_url="pgsql://#{database_user}:#{database_password}@#{database_hostname}:#{database_port}/#{database_name}"
 
 
@@ -176,10 +182,18 @@ execute "run composer install" do
   action :run
 end
 
-append_if_no_line "add database_url environment variable" do
-  path "/var/www/imvlandau-api/.env.local"
-  line "DATABASE_URL=#{database_url}"
-  action :edit
+template "/var/www/imvlandau-api/.env.local" do
+  source ".env.local.erb"
+  variables(config: {
+    "DATABASE_URL" => database_url,
+    "AUTH0_DOMAIN" => react_app_auth0_domain,
+    "AUTH0_CLIENT_ID" => react_app_auth0_client_id,
+    "AUTH0_AUDIENCE" => react_app_auth0_audience
+  })
+  owner owner
+  group group
+  mode "644"
+  action :create
 end
 
 execute "change owner of .env.local" do
