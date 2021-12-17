@@ -5,6 +5,7 @@
     "client": {
       "react_app_auth0_domain": "myauth0accountname.countrycode.auth0.com",
       "react_app_auth0_client_id": "myauth0clientid",
+      "react_app_auth0_audience": "https://myauth0applicationname.com/api",
       "ip": "10.0.0.10",
       "system": {
         "timezone": "Europe/Berlin",
