@@ -159,7 +159,7 @@ COPY public.participant (id, name, email, mobile, companion_1, companion_2, comp
 --
 
 COPY public.settings (id, eventmaximumamount, eventdate, eventtime1, eventtime2, eventtopic, eventlocation, eventemailsubject, eventemailtemplate, created_at, updated_at) FROM stdin;
-1	150	2021-12-17	01:00:00	\N	Freitagsgebet	Landau	QrCode für {{ eventTopic }} um {{ eventTime }} Uhr am {{ eventDate }} in der {{ eventLocation }}	As-salāmu ʿalaikum wa-raḥmatu llāhi wa-barakātuhu {{ name }}!<br /><br />Du hast Dich erfolgreich für {{ eventTopic }} am {{ eventDate }} um {{ eventTime }} Uhr registriert.<br /><br />Veranstaltungsort ist {{ eventLocation }}.<br /><br />Hier ist Dein QR-Code für den Anmeldeprozess am Eingang:<br /><br /><img src="cid:QrCode" data-mce-src="cid:QrCode" /><br /><br />Wir freuen uns schon auf Dich und BarakAllahu Feek(i)<br /><br />Dein IMV-Landau e. V.	2021-12-16 05:01:58	2021-12-16 05:02:11
+1	150	2021-12-17	13:00:00	\N	das Freitagsgebet	Abu Bakr Moschee	QrCode für {{ eventTopic }} um {{ eventTime }} Uhr am {{ eventDate }} in der {{ eventLocation }}	As-salāmu ʿalaikum wa-raḥmatu llāhi wa-barakātuhu {{ name }}!<br /><br />Du hast Dich erfolgreich für {{ eventTopic }} am {{ eventDate }} um {{ eventTime }} Uhr registriert.<br /><br />Veranstaltungsort ist {{ eventLocation }}.<br /><br />Hier ist Dein QR-Code für den Anmeldeprozess am Eingang:<br /><br /><img src="cid:QrCode" /><br /><br />Wir freuen uns schon auf Dich und BarakAllahu Feek(i)<br /><br />Dein IMV-Landau e. V.	2021-12-16 05:01:58	2021-12-17 02:55:54
 \.
 
 
