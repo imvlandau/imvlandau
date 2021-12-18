@@ -113,8 +113,8 @@ Vagrant.configure("2") do |config|
     database.vm.network "private_network", ip: configuration["imv"]["database"]["ip"]
     database.vm.provider "virtualbox" do |v|
       v.name = "database"
-      v.memory = 2000
-      # v.cpus = 1
+      v.memory = 1000
+      v.cpus = 1
     end
 
     ####### Provision #######
@@ -156,8 +156,8 @@ Vagrant.configure("2") do |config|
     api.vm.network "private_network", ip: configuration["imv"]["api"]["ip"]
     api.vm.provider "virtualbox" do |v|
       v.name = "api"
-      v.memory = 2000
-      # v.cpus = 1
+      v.memory = 1000
+      v.cpus = 1
     end
 
     ####### Provision #######
@@ -199,8 +199,8 @@ Vagrant.configure("2") do |config|
     client.vm.network "private_network", ip: configuration["imv"]["client"]["ip"]
     client.vm.provider "virtualbox" do |v|
       v.name = "client"
-      v.memory = 2000
-      # v.cpus = 1
+      v.memory = 1300
+      v.cpus = 1
     end
 
     client.vm.provision 'chef_zero' do |chef|
