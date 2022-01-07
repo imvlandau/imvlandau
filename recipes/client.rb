@@ -38,6 +38,8 @@ fail "Base URL is undefined" unless react_app_base_url && !react_app_base_url.em
 # installation process
 #####################
 
+apt_update
+
 include_recipe "imvlandau::default"
 include_recipe "imvlandau::nodejs"
 

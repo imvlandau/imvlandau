@@ -48,6 +48,8 @@ database_url="pgsql://#{database_user}:#{database_password}@#{database_hostname}
 # installation process
 #####################
 
+apt_update
+
 include_recipe "imvlandau::default"
 include_recipe "imvlandau::apache2"
 include_recipe "imvlandau::nodejs"
