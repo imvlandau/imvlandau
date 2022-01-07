@@ -71,8 +71,27 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # NOTE: This will enable public access
-  $default_network_interface = `ip route | awk '/^default/ {printf "%s", $5; exit 0}'`
-  config.vm.network "public_network", bridge: "#$default_network_interface"
+  module OS
+      def OS.windows?
+          (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+      end
+
+      def OS.mac?
+          (/darwin/ =~ RUBY_PLATFORM) != nil
+      end
+
+      def OS.unix?
+          !OS.windows?
+      end
+
+      def OS.linux?
+          OS.unix? and not OS.mac?
+      end
+  end
+  if OS.linux?
+      $default_network_interface = `ip route | awk '/^default/ {printf "%s", $5; exit 0}'`
+      config.vm.network "public_network", bridge: "#$default_network_interface"
+  end
 
   # Increase disk speed with nfs: true (Linux only)
   # config.vm.synced_folder "./", "/home/vagrant/imvlandau", nfs: true
