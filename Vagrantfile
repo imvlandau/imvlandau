@@ -211,7 +211,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "client" do |client|
-    client.vm.box = "generic/ubuntu1804"
+    client.vm.box = "generic/ubuntu2010"
     for i in 8000..8100
         client.vm.network "forwarded_port", guest: i, host: i, host_ip: "127.0.0.1"
     end

@@ -9,13 +9,7 @@
 # setup process
 #####################
 
-bash "install nodejs" do
-  cwd "/tmp"
-  code <<-EOH
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    sudo apt install nodejs -y
-  EOH
-  user "root"
-  group "root"
-  action :run
-end
+apt_update
+
+include_recipe "nodejs"
+include_recipe "nodejs::npm"
